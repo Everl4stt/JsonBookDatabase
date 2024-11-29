@@ -18,7 +18,14 @@ def menu():
     return option
 
 def booklist():
-    pass
+    with open('booklist.json', 'r', encoding = 'utf-8') as f:
+        booklist = json.load(f)
+        if booklist == '':
+            return 'В библиотеке пока что нет книг'
+    return booklist
+
 if __name__ == '__main__':
     option = menu()
+    if option == '1':
+        print(booklist())
 
