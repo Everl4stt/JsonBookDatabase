@@ -74,18 +74,18 @@ def save_data(data, file_name):
 def add_data(data, spaces):
     title = input('Введите название книги: (или нажмите Enter для возврата в меню) ')
     if not title:
-        print('Вы ничего не ввели, возврат в меню')
+        print('Вы ничего не ввели, возврат в меню\n')
         return
     author = input('Введите автора книги (или нажмите Enter для возврата в меню): ')
     if not author:
-        print('Вы ничего не ввели, возврат в меню')
+        print('Вы ничего не ввели, возврат в меню\n')
         return
     title = title.strip().upper()
     author = author.strip().lower().capitalize()
     if isdatavalid(title=title, author=author) or not data:
         year = input('Введите год издания книги (или нажмите Enter для возврата в меню): ')
         if not year:
-            print('Вы ничего не ввели, возврат в меню')
+            print('Вы ничего не ввели, возврат в меню\n')
             return
         year = year.strip().lower()
         new_book = {
@@ -153,22 +153,22 @@ def show_data(data, positions=None):
 def del_data(data, spaces):
     search_id = input('Введите id книги, которую хотите удалить (или нажмите Enter для возврата в меню)\n')
     if not search_id:
-        print('Вы ничего не ввели, возврат в меню')
+        print('Вы ничего не ввели, возврат в меню\n')
         return
     try:
         search_id_int = int(search_id)
     except ValueError:
-        print('Книги с таким id нет в библиотеке')
+        print('Книги с таким id нет в библиотеке\n')
         return
     if search_id_int in range(len(data)) and search_id_int not in spaces:
-        print(f'Книга "{data[search_id_int]['title']}" c id: {search_id_int}  удалена из библиотеки')
+        print(f'Книга "{data[search_id_int]['title']}" c id: {search_id_int}  удалена из библиотеки\n')
         hash_table_del(hash_table=hash_table_title,   key=data[search_id_int]['title'],   value=search_id_int)
         hash_table_del(hash_table=hash_table_author,  key=data[search_id_int]['author'],  value=search_id_int)
         hash_table_del(hash_table=hash_table_year,    key=data[search_id_int]['year'],    value=search_id_int)
         data[search_id_int] = None
         spaces.append(search_id_int)
     else:
-        print('Книги с таким id нет в библиотеке')
+        print('Книги с таким id нет в библиотеке\n')
     return data, spaces
 
 '''
@@ -249,7 +249,7 @@ def swap_status(data, spaces):
     print('Введите id книги, которой хотите изменить статус (или нажмите Enter для возврата в меню):\n')
     search_id = input()
     if not search_id:
-        return 'Вы ничего не ввели, возврат в меню'
+        return 'Вы ничего не ввели, возврат в меню\n'
     try:
         search_id_int = int(search_id)
     except ValueError:
